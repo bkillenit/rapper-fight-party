@@ -63,6 +63,13 @@ $(document).ready(function(){
   $('#lineup').on('click', function(event) {  
     battle = !battle;
     if(battle) {
+
+      $('#lineup').siblings().each(function() {
+        if($(this).attr('id') !== 'lineup') $(this).css('visibility', 'none');
+      });
+
+      $('#lineup').text('Stop Battle!!!');
+
       for(var i=0; i<rappers.length; i++) {
         if(rappers[i].left<window.innerWidth*.43) {
           rappers[i].lean = window.innerWidth*(0.5-rappers[i].depthfactor/.65*0.3);
@@ -70,6 +77,12 @@ $(document).ready(function(){
           rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.3+0.5);
         }
       }
+    } else {
+      $('#lineup').siblings().each(function() {
+        if($(this).attr('id') !== 'lineup') $(this).css('visibility', 'visible');
+      });
+
+      $('#lineup').text('Rap Battle!!!');
     }
   });
 });

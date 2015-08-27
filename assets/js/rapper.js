@@ -116,8 +116,7 @@ Rapper.prototype.displayBubble = function(lyric) {
 }
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
-  var name = 'eminem';
-  this.displayBubble(this.lyrics.getLyric(name))
+  this.displayBubble(this.lyrics.getLyric(this.value))
 }
 
 
