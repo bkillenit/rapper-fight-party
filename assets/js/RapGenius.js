@@ -33,7 +33,6 @@ RapGenius.prototype.getLyric = function(artist) {
 		var lyrics = data.Lyric.split('\n');
 		var randIndex = Math.floor(Math.random() * lyrics.length);
 		randomLyric = lyrics[randIndex];
+		return randomLyric;
 	});
-
-	return randomLyric;
 }
