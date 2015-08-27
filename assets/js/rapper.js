@@ -10,15 +10,16 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.$node = $('<div class="rapper"></div>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
-  this.left = left;  
+  this.left = left;
   this.lean = lean;
   this.value = 'default';
+  this.talk();
   this.$node.attr('id', this.value);
   $('.container').append(this.$node);
   this.lyrics = new RapGenius(name);
 }
 
-Rapper.prototype.move = function(up) {  
+Rapper.prototype.move = function(up) {
   if(up) {
     this.top-=10;
   } else {
@@ -28,7 +29,7 @@ Rapper.prototype.move = function(up) {
   setTimeout(this.move.bind(this,!up), this.timeBetweenSteps);
 };
 
-Rapper.prototype.walk = function() {  
+Rapper.prototype.walk = function() {
   this.setPosition(this.top, this.left);
 
   setTimeout(this.step.bind(this), this.timeBetweenSteps);

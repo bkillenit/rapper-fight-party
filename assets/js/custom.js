@@ -3,7 +3,6 @@
 $(document).ready(function(){
   window.rappers = [];
   $('.addRapperButton').on('click', function(event) {
-    debugger
     var rapper = makeRapper(
       $('.container').height(),
       $('.container').height(),
@@ -11,15 +10,14 @@ $(document).ready(function(){
     )
   });
   $('.addKanyeButton').on('click', function(event) {
-    debugger;
-      var rapper = new Rapper( 
+      var rapper = new Rapper(
         $('body').height(),
         $('body').height(),
         Math.random()*10
       )
     });
   $('.addRickButton').on('click', function(event) {
-      var rapper = new Rapper( 
+      var rapper = new Rapper(
         $('body').height() * Math.random(),
         $('body').height() * Math.random(),
         Math.random()*1000
@@ -29,14 +27,14 @@ $(document).ready(function(){
 
     });
   $('.addSnoopButton').on('click', function(event) {
-      var rapper = new Rapper( 
+      var rapper = new Rapper(
         $('body').height() * Math.random(),
         $('body').height() * Math.random(),
         Math.random()*1000
       )
     });
   $('.addTuPacButton').on('click', function(event) {
-    var rapper = new Rapper( 
+    var rapper = new Rapper(
       $('body').height() * Math.random(),
       $('body').height() * Math.random(),
       Math.random()*1000
