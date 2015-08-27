@@ -1,4 +1,6 @@
 var Rapper = function(value, top, left, timeBetweenSteps, lean) {
+  window.battle = false;
+
   this.$node = $('<div class="rapper"></div>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
@@ -14,14 +16,10 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
-  this.multipl = .51;
+  this.multipl = .5;
   //actions
   this.walk();
     
-  if(!window.battle) {
-    window.battle = false;
-  }
-
   // this.jump()
 };
 
@@ -61,13 +59,13 @@ Rapper.prototype.walk = function() {
     if(this.lean < window.innerWidth*.5){
       if(this.top<this.depth || this.left>this.lean) {
         if(this.top<this.depth) {
-          this.top+=15;
+          this.top+=25;
         }
         if(this.left>this.lean) {
-          this.left-=15;
+          this.left-=25;
         }
         this.$node.animate(this.setPosition(this.top, this.left));
-        setTimeout(this.walk.bind(this), this.timeBetweenSteps/2);
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
       } else {
         this.jump();
       }
@@ -76,13 +74,13 @@ Rapper.prototype.walk = function() {
     else {        
       if(this.top<this.depth || this.left<this.lean) {
         if(this.top<this.depth) {
-          this.top+=15;
+          this.top+=25;
         }
         if(this.left<this.lean) {
-          this.left+=15;
+          this.left+=25;
         }
         this.$node.animate(this.setPosition(this.top, this.left));
-        setTimeout(this.walk.bind(this), this.timeBetweenSteps/2);
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
       } else { 
         this.jump();
       }
