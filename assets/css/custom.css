@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-position: 0px 30px;
   background-repeat: no-repeat;
+  margin: auto;
 }
 
 .button {
@@ -22,10 +23,24 @@ body {
 	cursor: pointer;
 }
 
+.bubble {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  text-align: center;
+  min-width: 50px;
+  max-width: 35%;
+}
+
 .rapper {
-  position: fixed;
+  position: relative;
   height: 250px;
-  width: 125px;
+  width: 135px;
 }
 
 #default {

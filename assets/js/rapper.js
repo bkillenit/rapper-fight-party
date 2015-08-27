@@ -76,9 +76,20 @@ Rapper.prototype.dance = function() {
 
 }
 
+Rapper.prototype.displayBubble = function(lyric) {
+  if( $('.bubble')[0] ){
+    $('.bubble').text("\"" + lyric + "\"");
+  } else {
+    $('.topbar').after("<div class='bubble'></div>");
+    //this.$node.append("<div class='bubble'></div>");
+    var $bubble = $('body').find('.bubble');
+    $bubble.text("\"" + lyric + "\"");
+  }
+}
+
 Rapper.prototype.talk = function(timeBetweenSteps) {
-  var name = 'eminem'
-  alert(this.lyrics.getLyric(name));
+  var name = 'eminem';
+  this.displayBubble(this.lyrics.getLyric(name))
 }
 
 

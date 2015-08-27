@@ -1,6 +1,6 @@
 // debugger;
 
-$(document).ready(function(){
+$(document).ready(function(){  
   window.rappers = [];
   $('#addRapperButton').on('click', function(event) {
     var rapper = new Rapper(null,
