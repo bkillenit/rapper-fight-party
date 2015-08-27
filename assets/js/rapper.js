@@ -11,9 +11,9 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   $('.container').append(this.$node);  
   this.$node.css(this.setPosition(this.top, this.left));
 
-
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
+  this.$node.css( "zIndex", Math.floor(this.depth));
   this.multipl = .51;
   //actions
   this.walk();
@@ -24,6 +24,11 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
   // this.jump()
 };
+
+Rapper.prototype.resize = function() {
+  this.$node.height(this.top/3 + 80);
+  this.$node.width(this.top/3 + 10);
+}
 
 Rapper.prototype.jump = function(up) {
   if(up) {
@@ -38,6 +43,7 @@ Rapper.prototype.jump = function(up) {
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
     this.top += 30;
+    this.resize();
   }
   var random = Math.random();
   if(random<this.multipl) {
@@ -62,6 +68,7 @@ Rapper.prototype.walk = function() {
       if(this.top<this.depth || this.left>this.lean) {
         if(this.top<this.depth) {
           this.top+=15;
+          this.resize();
         }
         if(this.left>this.lean) {
           this.left-=15;
@@ -77,6 +84,7 @@ Rapper.prototype.walk = function() {
       if(this.top<this.depth || this.left<this.lean) {
         if(this.top<this.depth) {
           this.top+=15;
+          this.resize();
         }
         if(this.left<this.lean) {
           this.left+=15;

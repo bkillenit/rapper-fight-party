@@ -1,16 +1,26 @@
 body {
+  margin: auto;
+  height: 100%;
+}
+
+.topbar {
+  display: block;
+}
+
+.container {
+  display: block;
   background-image: url('../img/alley-backway.jpg');
   background-size: cover;
-  background-position: 0px 30px;
+  background-position: 0px 35px;
   background-repeat: no-repeat;
-  margin: auto;
+  height: 100vh;
 }
 
 .button {
 	width: 130px;
-	margin: 0px 10px;
+	margin: 3px 10px;
 	padding: 5px 10px;
-	background-color: white;
+	background-color: #cccccc;
 	text-decoration: none;
 	color: black;
 	display: inline-block;
@@ -24,8 +34,10 @@ body {
 }
 
 .bubble {
+  position: absolute;
   display: block;
-  top: 400px;
+  left: 675px;
+  margin-top: 250px;
   margin-right: auto;
   margin-left: auto;
   padding: 10px 15px;
@@ -36,10 +48,11 @@ body {
   text-align: center;
   min-width: 50px;
   max-width: 35%;
+  z-index: 1000;
 }
 
 .rapper {
-  position: relative;
+  position: fixed;
   height: 250px;
   width: 135px;
 }
