@@ -65,7 +65,7 @@ $(document).ready(function(){
     if(battle) {
 
       $('#lineup').siblings().each(function() {
-        if($(this).attr('id') !== 'lineup') $(this).css('visibility', 'none');
+        if($(this).attr('id') !== 'lineup') $(this).css('visibility', 'hidden');
       });
 
       $('#lineup').text('Stop Battle!!!');
@@ -83,6 +83,8 @@ $(document).ready(function(){
       });
 
       $('#lineup').text('Rap Battle!!!');
+
+      // run what we want
     }
   });
 });
