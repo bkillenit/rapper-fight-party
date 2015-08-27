@@ -1,6 +1,5 @@
 var Snoop = function(top, left, timeBetweenSteps, lean) {
-  Rapper.call(this, top, left, timeBetweenSteps, lean);
-  this.value = 'snoop dogg';
+  Rapper.call(this, 'snoop-dogg', top, left, timeBetweenSteps, lean);
 };
 
 Snoop.prototype = Object.create(Rapper.prototype);
