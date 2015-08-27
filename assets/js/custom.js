@@ -3,7 +3,6 @@
 $(document).ready(function(){
   window.rappers = [];
   $('.addRapperButton').on('click', function(event) {
-    alert()
     var rapper = makeRapper(
       $('body').height() * Math.random(),
       $('body').height() * Math.random(),

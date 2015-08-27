@@ -1,7 +1,6 @@
 var makeRapper = function(top, left, timeBetweenSteps, lean) {
-  alert(rapper.value, 'created!')
   var rapper = new Rapper(top, left, timeBetweenSteps, lean);
-  alert(rapper.value, 'created!')
+  alert(rapper.talk())
   return rapper;
 }
 
@@ -14,7 +13,7 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.lean = lean;
   this.step();
   this.value = 'default';
-  this.lyrics = new RapGenius(name)
+  this.lyrics = new RapGenius(name);
 }
 
 Rapper.prototype.step = function() {  
@@ -32,7 +31,8 @@ Rapper.prototype.dance = function() {
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   var name = 'eminem'
-  lyrics.getLyrics(name);
+  debugger;
+  return this.lyrics.getLyric(name);
 }
 
 
