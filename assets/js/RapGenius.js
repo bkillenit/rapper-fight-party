@@ -29,11 +29,16 @@ RapGenius.prototype.getLyric = function(artist) {
 
 	var randomLyric = "";
 
-	$.get(baseURL, requestObj).done(function(data){
-		var lyrics = data.Lyric.split('\n');
-		var randIndex = Math.floor(Math.random() * lyrics.length);
-		randomLyric = lyrics[randIndex];
-		alert(data);
-		return randomLyric;
+	$.ajax({
+		url: baseURL,
+		data: requestObj,
+		dataType: 'xml',
+		success: function(data){
+			var lyrics = data.Lyric.split('\n');
+			var randIndex = Math.floor(Math.random() * lyrics.length);
+			randomLyric = lyrics[randIndex];
+			alert(data);
+			return randomLyric;
+		}
 	});
 }
