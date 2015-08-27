@@ -82,7 +82,7 @@ Rapper.prototype.displayBubble = function(lyric) {
   } else {
     $('.topbar').after("<div class='bubble'></div>");
     //this.$node.append("<div class='bubble'></div>");
-    var $bubble = $('body').find('.bubble');
+    var $bubble = $('.container').find('.bubble');
     $bubble.text("\"" + lyric + "\"");
   }
 }
