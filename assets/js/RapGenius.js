@@ -26,9 +26,13 @@ RapGenius.prototype.getLyric = function(artist) {
 	requestObj.artist = artist;
 	requestObj.song = this.getRandomSong(artist);
 
+	var randomLyric = "";
+
 	$.get(baseURL, requestObj).done(function(data){
-		alert(loadedData);
+		var lyrics = data.Lyric.split('\n');
+		var randIndex = Math.floor(Math.random() * lyrics.length);
+		randomLyric = lyrics[randIndex];
 	});
 
-	return;
+	return randomLyric;
 }
