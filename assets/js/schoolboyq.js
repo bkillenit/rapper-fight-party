@@ -1,6 +1,5 @@
 var SchoolBoyQ = function(top, left, timeBetweenSteps, lean) {
-  Rapper.call(this, top, left, timeBetweenSteps, lean);
-  this.value = 'schoolboy q';
+  Rapper.call(this, 'schoolboy-q', top, left, timeBetweenSteps, lean);
 };
 
 SchoolBoyQ.prototype = Object.create(Rapper.prototype);

@@ -1,6 +1,5 @@
 var TuPac = function(top, left, timeBetweenSteps, lean) {
-  Rapper.call(this, top, left, timeBetweenSteps, lean);
-  this.value = 'tupac'
+  Rapper.call(this, 'tupac', top, left, timeBetweenSteps, lean);
 };
 
 TuPac.prototype = Object.create(Rapper.prototype);
