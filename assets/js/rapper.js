@@ -1,7 +1,7 @@
 var makeRapper = function(top, left, timeBetweenSteps, lean) {
   var rapper = new Rapper(top, left, timeBetweenSteps, lean);
-  rapper.step();
-  alert(rapper.talk());
+  //rapper.walk();
+  rapper.move(true);
   return rapper;
 }
 
@@ -18,7 +18,17 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.lyrics = new RapGenius(name);
 }
 
-Rapper.prototype.step = function() {  
+Rapper.prototype.move = function(up) {  
+  if(up) {
+    this.top-=10;
+  } else {
+    this.top+=10;
+  }
+  this.setPosition(this.top, this.left);
+  setTimeout(this.move.bind(this,!up), this.timeBetweenSteps);
+};
+
+Rapper.prototype.walk = function() {  
   this.setPosition(this.top, this.left);
 
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
@@ -38,16 +48,6 @@ Rapper.prototype.talk = function(timeBetweenSteps) {
 
 
 Rapper.prototype.setPosition = function(top, left){
-  if(this.top>window.innerHeight) {
-    this.top -= 10;
-  } else {
-    this.top += 10;
-  }
-  if(this.left>window.innerWidth) {
-    this.left -= 10;
-  } else {
-    this.left += 10
-  }
   var styleSettings = {
     top: this.top,
     left: this.left
