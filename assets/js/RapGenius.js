@@ -39,6 +39,9 @@ RapGenius.prototype.getLyric = function(artist) {
 			randomLyric = lyrics[randIndex];
 			alert(data);
 			return randomLyric;
+		},
+		error: function(error) {
+			this.getLyric(artist);
 		}
 	});
 }
