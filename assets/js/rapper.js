@@ -4,11 +4,11 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.top = top;
   this.left = left;
   this.lean = lean;
-  this.value = value || 'default';
-  $('.container').append(this.$node);
+  this.value = 'default';
   this.lyrics = new RapGenius(name);
+  this.talk();
   this.$node.attr('id', this.value);
-  this.$node.css(this.setPosition(this.top, this.left));
+  $('.container').append(this.$node);  
 
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
@@ -19,6 +19,10 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 };
 
 Rapper.prototype.jump = function(up) {
+  this.move(true);
+}
+
+Rapper.prototype.move = function(up) {
   if(up) {
     this.top-=15;
   } else {
@@ -74,7 +78,7 @@ Rapper.prototype.dance = function() {
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   var name = 'eminem'
-  return this.lyrics.getLyric(name);
+  alert(this.lyrics.getLyric(name));
 }
 
 
