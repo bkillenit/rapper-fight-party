@@ -20,7 +20,7 @@ RapGenius.prototype.getRandomSong = function(artist) {
 
 RapGenius.prototype.getLyric = function(artist) {
 	if(artist === 'default') return;
-	
+
 	var lyrics = this.getRandomSong(artist);
 	var randIndex = Math.floor(Math.random() * lyrics.length);
 

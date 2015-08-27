@@ -1,6 +1,6 @@
 // debugger;
 
-$(document).ready(function(){
+$(document).ready(function(){  
   window.rappers = [];
   window.battle = false;
   $('#addRapperButton').on('click', function(event) {

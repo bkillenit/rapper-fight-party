@@ -13,15 +13,20 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   $('.container').append(this.$node);  
   this.$node.css(this.setPosition(this.top, this.left));
 
-
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
   this.multipl = .5;
+  this.$node.css( "zIndex", Math.floor(this.depth));
   //actions
   this.walk();
     
   // this.jump()
 };
+
+Rapper.prototype.resize = function() {
+  this.$node.height(this.top/3 + 80);
+  this.$node.width(this.top/3 + 10);
+}
 
 Rapper.prototype.jump = function(up) {
   if(up) {
@@ -36,6 +41,7 @@ Rapper.prototype.jump = function(up) {
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
     this.top += 30;
+    this.resize();
   }
   var random = Math.random();
   if(random<this.multipl) {
@@ -60,6 +66,8 @@ Rapper.prototype.walk = function() {
       if(this.top<this.depth || this.left>this.lean) {
         if(this.top<this.depth) {
           this.top+=25;
+          this.top+=15;
+          this.resize();
         }
         if(this.left>this.lean) {
           this.left-=25;
@@ -75,6 +83,7 @@ Rapper.prototype.walk = function() {
       if(this.top<this.depth || this.left<this.lean) {
         if(this.top<this.depth) {
           this.top+=25;
+          this.resize();
         }
         if(this.left<this.lean) {
           this.left+=25;
@@ -95,9 +104,20 @@ Rapper.prototype.dance = function() {
 
 }
 
+Rapper.prototype.displayBubble = function(lyric) {
+  if( $('.bubble')[0] ){
+    $('.bubble').text("\"" + lyric + "\"");
+  } else {
+    $('.topbar').after("<div class='bubble'></div>");
+    //this.$node.append("<div class='bubble'></div>");
+    var $bubble = $('.container').find('.bubble');
+    $bubble.text("\"" + lyric + "\"");
+  }
+}
+
 Rapper.prototype.talk = function(timeBetweenSteps) {
-  var name = this.value;
-  //alert(this.lyrics.getLyric(name));
+  var name = 'eminem';
+  this.displayBubble(this.lyrics.getLyric(name))
 }
 
 
