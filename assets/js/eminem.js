@@ -1,6 +1,5 @@
 var Eminem = function(top, left, timeBetweenSteps, lean) {
   Rapper.call(this, top, left, timeBetweenSteps, lean);
-  this.move = null;
   this.value = 'eminem';
 };
 

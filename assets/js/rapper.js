@@ -5,13 +5,12 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.left = left;  
   this.lean = lean;
   this.value = 'default';
-  this.$node.attr('id', this.value);
   $('.container').append(this.$node);
   this.lyrics = new RapGenius(name);
   
 
   //actions
-
+  this.walk();
   this.move(true);
 }
 
@@ -26,6 +25,8 @@ Rapper.prototype.move = function(up) {
 };
 
 Rapper.prototype.walk = function() {  
+  debugger;
+  this.$node.attr('id', this.value);
   this.setPosition(this.top, this.left);
 
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
