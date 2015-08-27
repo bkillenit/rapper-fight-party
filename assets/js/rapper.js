@@ -4,33 +4,36 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.top = top;
   this.left = left;
   this.lean = lean;
-  this.value = 'default';
+  this.value = value || 'default';
   this.lyrics = new RapGenius(name);
   this.talk();
   this.$node.attr('id', this.value);
   $('.container').append(this.$node);  
+  this.$node.css(this.setPosition(this.top, this.left));
+
 
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
   this.multipl = .5;
   //actions
   this.walk();
+    
+  if(!window.battle) {
+    window.battle = false;
+  }
+
   // this.jump()
 };
 
 Rapper.prototype.jump = function(up) {
-  this.move(true);
-}
-
-Rapper.prototype.move = function(up) {
   if(up) {
-    this.top-=15;
+    this.top-=25;
   } else {
-    this.top+=15;
+    this.top+=25;
   }
   this.$node.animate(this.setPosition(this.top, this.left));
   setTimeout(this.jump.bind(this,!up), this.timeBetweenSteps);
-};
+}
 
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
@@ -48,25 +51,34 @@ Rapper.prototype.wander = function() {
   this.$node.animate(this.setPosition(this.top, this.left));
 }
 
-Rapper.prototype.walk = function(top, left) {
+Rapper.prototype.walk = function() {
   // console.log(top, left, this.top, this.left)
-  if(!top && !left) {
+  if(!window.battle) {
     this.wander();
-    setTimeout(this.walk.bind(this), this.timeBetweenSteps);
+      setTimeout(this.walk.bind(this), this.timeBetweenSteps);
   } else {
-    console.log(top, left, this.top, this.left)
-    if(this.top<top && this.left<left) {
-      if(this.top<top) {
+    //line up to the right, if current horizontal position (left) > lean
+    if(this.top<this.depth || this.left>this.lean) {
+      if(this.top<this.depth) {
         this.top+=30;
       }
-      if(this.left<left) {
-        this.left+=30;
+      if(this.left>this.lean) {
+        this.left-=30;
+      }
+    }
+    //line up to the left, if lean < half of screen        
+    else if(this.top<this.depth || this.left<this.lean) {
+      if(this.top<this.depth) {
+        this.top+=30;
+      }
+      if(this.left>this.lean) {
+        this.left-=30;
       }
       this.$node.animate(this.setPosition(this.top, this.left));
-      setTimeout(this.walk(top, left), this.timeBetweenSteps);
-    }
-    // this.jump();
-  }
+      setTimeout(this.walk.bind(this), this.timeBetweenSteps);
+    } else { 
+      this.jump();
+  }}
 };
 
 Rapper.prototype.dance = function() {
@@ -77,8 +89,8 @@ Rapper.prototype.dance = function() {
 }
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
-  var name = 'eminem'
-  alert(this.lyrics.getLyric(name));
+  var name = this.value;
+  //alert(this.lyrics.getLyric(name));
 }
 
 
