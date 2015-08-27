@@ -2,44 +2,36 @@
 
 $(document).ready(function(){
   window.rappers = [];
-  $('.addRapperButton').on('click', function(event) {
-    debugger
-    var rapper = makeRapper(
-      $('.container').height(),
-      $('.container').height(),
+  $('#addRapperButton').on('click', function(event) {
+    var rapper = new Rapper(
+      window.innerHeight/2,
+      window.innerWidth/2,
       Math.random()*1000
     )
   });
-  $('.addKanyeButton').on('click', function(event) {
-    debugger;
-      var rapper = new Rapper( 
-        $('body').height(),
-        $('body').height(),
-        Math.random()*10
+  $('#addkanyewestButton').on('click', function(event) {
+      var rapper = new KanyeWest( 
       )
     });
-  $('.addRickButton').on('click', function(event) {
-      var rapper = new Rapper( 
-        $('body').height() * Math.random(),
-        $('body').height() * Math.random(),
-        Math.random()*1000
+  $('#addrickrossButton').on('click', function(event) {
+      var rapper = new RickRoss( 
       )
     });
-  $('.addSchoolBButton').on('click', function(event) {
-
-    });
-  $('.addSnoopButton').on('click', function(event) {
-      var rapper = new Rapper( 
-        $('body').height() * Math.random(),
-        $('body').height() * Math.random(),
-        Math.random()*1000
+  $('#addschoolboyqButton').on('click', function(event) {
+      var rapper = new SchoolBoyQ(
       )
     });
-  $('.addTuPacButton').on('click', function(event) {
-    var rapper = new Rapper( 
-      $('body').height() * Math.random(),
-      $('body').height() * Math.random(),
-      Math.random()*1000
+  $('#addsnoopButton').on('click', function(event) {
+      var rapper = new Snoop( 
+      )
+    });
+  $('#addtupacButton').on('click', function(event) {
+    var rapper = new TuPac( 
+    )
+  });
+  $('#addeminemButton').on('click', function(event) {
+    var rapper = new Eminem( 
     )
   });
 });
+
