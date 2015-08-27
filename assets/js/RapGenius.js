@@ -1,4 +1,5 @@
 // example get request: http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=michael%20jackson&song=bad
+var chartlyrics = require('chartlyrics');
 
 var RapGenius = function() {
 
@@ -21,27 +22,20 @@ RapGenius.prototype.getRandomSong = function(artist) {
 }
 
 RapGenius.prototype.getLyric = function(artist) {
-	var baseURL = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect";
+	var artist = artist;
+	var song = this.getRandomSong(artist);
 
-	var requestObj = {};
-	requestObj.artist = artist;
-	requestObj.song = this.getRandomSong(artist);
+	// Important: You can only call one of these functions at a single time. Calling the following
+	// functions all at once will result in only the last call working. This is done intentionally
+	// by chartlyrics to limit and prevent abuse of their API.
 
-	var randomLyric = "";
-
-	$.ajax({
-		url: baseURL,
-		data: requestObj,
-		dataType: 'xml',
-		success: function(data){
-			var lyrics = data.Lyric.split('\n');
-			var randIndex = Math.floor(Math.random() * lyrics.length);
-			randomLyric = lyrics[randIndex];
-			alert(data);
-			return randomLyric;
-		},
-		error: function(error) {
-			this.getLyric(artist);
-		}
+	// Search for artist and song
+	// Returns a list of possible artists/songs related to given artist and song
+	chartlyrics.getLyrics(artist, song)
+	.then(function(results) {
+		return results;
+	})
+	.catch(function(err) {
+		console.error(err);
 	});
 }
