@@ -8,41 +8,60 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   $('.container').append(this.$node);
   this.lyrics = new RapGenius(name);
   this.$node.attr('id', this.value);
+  this.$node.css(this.setPosition(this.top, this.left));
 
-  this.depth = Math.random() * .25 + .4;
+  this.depthfactor = Math.random() * .25 + .4;
+  this.depth = this.depthfactor * window.innerHeight;
   this.multipl = .5;
   //actions
   this.walk();
-  //this.jump(true);
-}
+  // this.jump()
+};
 
 Rapper.prototype.jump = function(up) {
   if(up) {
-    this.top-=10;
+    this.top-=15;
   } else {
-    this.top+=10;
+    this.top+=15;
   }
-  this.setPosition(this.top, this.left);
+  this.$node.animate(this.setPosition(this.top, this.left));
   setTimeout(this.jump.bind(this,!up), this.timeBetweenSteps);
 };
 
+Rapper.prototype.wander = function() {
+  if(this.top<this.depth) {
+    this.top += 30;
+  }
+  if(Math.random()<this.multipl) {
+    if(this.left>window.innerWidth*.3){
+      this.left -= 30;
+    }
+  } else {
+    if(this.left<window.innerWidth*.7){
+      this.left += 30;
+    }
+  }
+  this.$node.animate(this.setPosition(this.top, this.left));
+}
+
 Rapper.prototype.walk = function(top, left) {
-  if(!top || !left) {
-    if(this.top<(window.innerHeight*this.depth)) {
-      console.log('is this always running?',this.top, window.innerWidth)
-      this.top += 30;
-    }
-    if(Math.random()<this.multipl) {
-      if(this.left>window.innerWidth*.3){
-        this.left -= 30;
-      }
-    } else {
-      if(this.left<window.innerWidth*.7){
-        this.left += 30;
-      }
-    }
-    this.setPosition(this.top, this.left);
+  // console.log(top, left, this.top, this.left)
+  if(!top && !left) {
+    this.wander();
     setTimeout(this.walk.bind(this), this.timeBetweenSteps);
+  } else {
+    console.log(top, left, this.top, this.left)
+    if(this.top<top && this.left<left) {
+      if(this.top<top) {
+        this.top+=30;
+      }
+      if(this.left<left) {
+        this.left+=30;
+      }
+      this.$node.animate(this.setPosition(this.top, this.left));
+      setTimeout(this.walk(top, left), this.timeBetweenSteps);
+    }
+    // this.jump();
   }
 };
 
@@ -64,6 +83,5 @@ Rapper.prototype.setPosition = function(top, left){
     top: this.top,
     left: this.left
   };
-  this.$node.css(styleSettings);
-  return;
+  return styleSettings;
 };
