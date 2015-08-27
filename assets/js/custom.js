@@ -65,9 +65,9 @@ $(document).ready(function(){
     if(battle) {
       for(var i=0; i<rappers.length; i++) {
         if(rappers[i].left<window.innerWidth*.43) {
-          rappers[i].lean = window.innerWidth*(0.4-rappers[i].depthfactor/.65*0.1);
-        } else {  
-          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.1+0.6);
+          rappers[i].lean = window.innerWidth*(0.5-rappers[i].depthfactor/.65*0.3);
+        } else {
+          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.3+0.5);
         }
       }
     }
