@@ -5,14 +5,12 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.left = left;
   this.lean = lean;
   this.value = 'default';
+  this.lyrics = new RapGenius(name);
   this.talk();
   this.$node.attr('id', this.value);
-  $('.container').append(this.$node);
-  this.lyrics = new RapGenius(name);
-  
+  $('.container').append(this.$node);  
 
   //actions
-
   this.move(true);
 }
 
@@ -41,7 +39,7 @@ Rapper.prototype.dance = function() {
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   var name = 'eminem'
-  return this.lyrics.getLyric(name);
+  alert(this.lyrics.getLyric(name));
 }
 
 
