@@ -4,3 +4,37 @@ body {
   background-position: 0px -240px;
   background-repeat: no-repeat;
 }
+
+.rapper {
+  position: fixed;
+  height: 250px;
+  width: 125px;
+}
+
+#default {
+  content: url('../img/rappers/default-rapper.png');
+}
+
+#eminem {
+  content: url('../img/rappers/eminem.png');
+}
+
+#rick-ross {
+  content: url('../img/rappers/rick-ross.png');
+}
+
+#kanye-west {
+  content: url('../img/rappers/kanye-west.png');
+}
+
+#schoolboy-q {
+  content: url('../img/rappers/schoolboy-q.png');
+}
+
+#snoop-dogg {
+  content: url('../img/rappers/snoop-dogg.png');
+}
+
+#tupac {
+  content: url('../img/rappers/tupac.png');
+}
