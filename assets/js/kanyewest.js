@@ -1,6 +1,5 @@
 var KanyeWest = function(top, left, timeBetweenSteps, lean) {
-  Rapper.call(this, top, left, timeBetweenSteps, lean);
-  this.value = 'kanye west'
+  Rapper.call(this, 'kanye-west', top, left, timeBetweenSteps, lean);
 };
 
 KanyeWest.prototype = Object.create(Rapper.prototype);
