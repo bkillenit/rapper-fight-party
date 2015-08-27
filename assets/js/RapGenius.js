@@ -19,10 +19,7 @@ RapGenius.prototype.getRandomSong = function(artist) {
 }
 
 RapGenius.prototype.getLyric = function(artist) {
-	var baseURL = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect";
-
-	var requestObj = {};
-	var lyrics = this.getRandomSong('kanye west');
+	var lyrics = this.getRandomSong(artist);
 	var randIndex = Math.floor(Math.random() * lyrics.length);
 
 	return lyrics[randIndex];
