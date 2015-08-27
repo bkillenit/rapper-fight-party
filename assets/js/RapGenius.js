@@ -9,7 +9,7 @@ var artistsSongs = {
 	'rick ross': ['box chevy', '911', 'i\'m not a star', 'hold me back'],
 	'schoolboy q': ['studio', 'collard greens', 'man of the year', 'hell of a night'],
 	'tupac': ['life goes on', 'thugz mansion', 'hit em up', 'dear mama'],
-	'snoop dogg': ['drop it like it\'s hot', 'i wanna rock', 'young, wild & free', 'doggy dogg world'];
+	'snoop dogg': ['drop it like it\'s hot', 'i wanna rock', 'young, wild & free', 'doggy dogg world']
 };
 
 RapGenius.prototype.getRandomSong = function(artist) {

@@ -1,4 +1,5 @@
 var makeRapper = function(top, left, timeBetweenSteps, lean) {
+  alert(rapper.value, 'created!')
   var rapper = new Rapper(top, left, timeBetweenSteps, lean);
   alert(rapper.value, 'created!')
   return rapper;
