@@ -1,7 +1,7 @@
 var makeRapper = function(top, left, timeBetweenSteps, lean) {
   var rapper = new Rapper(top, left, timeBetweenSteps, lean);
   rapper.step();
-  rapper.talk();
+  alert(rapper.talk());
   return rapper;
 }
 

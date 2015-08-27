@@ -28,6 +28,7 @@ RapGenius.prototype.getLyric = function(artist) {
 
 	var randomLyric = "";
 
+<<<<<<< HEAD
 	$.get(baseURL, requestObj).done(function(data){
 		randomLyric = data;
 		var lyrics = data.Lyric.split('\n');
@@ -35,5 +36,18 @@ RapGenius.prototype.getLyric = function(artist) {
 		randomLyric = lyrics[randIndex];
 		alert(data);
 		return randomLyric;
+=======
+	$.ajax({
+		url: baseURL,
+		data: requestObj,
+		dataType: 'xml',
+		success: function(data){
+			var lyrics = data.Lyric.split('\n');
+			var randIndex = Math.floor(Math.random() * lyrics.length);
+			randomLyric = lyrics[randIndex];
+			alert(data);
+			return randomLyric;
+		}
+>>>>>>> eb880d8e9ee2d00b6e0942be2c92fe7a9dc02ab3
 	});
 }
