@@ -14,7 +14,7 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
   this.depthfactor = Math.random() * .25 + .4;
   this.depth = this.depthfactor * window.innerHeight;
-  this.multipl = .5;
+  this.multipl = .51;
   //actions
   this.walk();
     
@@ -39,7 +39,8 @@ Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
     this.top += 30;
   }
-  if(Math.random()<this.multipl) {
+  var random = Math.random();
+  if(random<this.multipl) {
     if(this.left>window.innerWidth*.3){
       this.left -= 30;
     }
@@ -52,33 +53,41 @@ Rapper.prototype.wander = function() {
 }
 
 Rapper.prototype.walk = function() {
-  // console.log(top, left, this.top, this.left)
   if(!window.battle) {
     this.wander();
       setTimeout(this.walk.bind(this), this.timeBetweenSteps);
   } else {
-    //line up to the right, if current horizontal position (left) > lean
-    if(this.top<this.depth || this.left>this.lean) {
-      if(this.top<this.depth) {
-        this.top+=30;
-      }
-      if(this.left>this.lean) {
-        this.left-=30;
+    //line up to the left, if lean < half of screen
+    if(this.lean < window.innerWidth*.5){
+      if(this.top<this.depth || this.left>this.lean) {
+        if(this.top<this.depth) {
+          this.top+=15;
+        }
+        if(this.left>this.lean) {
+          this.left-=15;
+        }
+        this.$node.animate(this.setPosition(this.top, this.left));
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps/2);
+      } else {
+        this.jump();
       }
     }
-    //line up to the left, if lean < half of screen        
-    else if(this.top<this.depth || this.left<this.lean) {
-      if(this.top<this.depth) {
-        this.top+=30;
+    //line up to the right, if lean > half of screen
+    else {        
+      if(this.top<this.depth || this.left<this.lean) {
+        if(this.top<this.depth) {
+          this.top+=15;
+        }
+        if(this.left<this.lean) {
+          this.left+=15;
+        }
+        this.$node.animate(this.setPosition(this.top, this.left));
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps/2);
+      } else { 
+        this.jump();
       }
-      if(this.left>this.lean) {
-        this.left-=30;
-      }
-      this.$node.animate(this.setPosition(this.top, this.left));
-      setTimeout(this.walk.bind(this), this.timeBetweenSteps);
-    } else { 
-      this.jump();
-  }}
+    }
+  }
 };
 
 Rapper.prototype.dance = function() {

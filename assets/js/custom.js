@@ -23,7 +23,7 @@ $(document).ready(function(){
       var rapper = new RickRoss( 
       window.innerHeight*.20,
       window.innerWidth*.43,
-      Math.random()*704+302
+      Math.random()*400+200
       )
     rappers.push(rapper);
   });
@@ -31,7 +31,7 @@ $(document).ready(function(){
       var rapper = new SchoolBoyQ(
       window.innerHeight*.20,
       window.innerWidth*.43,
-      Math.random()*704+302
+      Math.random()*400+200
       )
     rappers.push(rapper);
   });
@@ -40,7 +40,7 @@ $(document).ready(function(){
       var rapper = new Snoop( 
       window.innerHeight*.20,
       window.innerWidth*.43,
-      Math.random()*704+302
+      Math.random()*400+200
       )
     rappers.push(rapper);
   });
@@ -62,16 +62,13 @@ $(document).ready(function(){
   });
   $('#lineup').on('click', function(event) {  
     battle = !battle;
-    console.log('is this running?')
-    for(var i=0; i<rappers.length; i++) {
-      if(rappers[i].left<window.innerWidth/2) {
-        console.log(i, 'left')
-        rappers[i].lean = window.innerWidth*(0.3-rappers[i].depthfactor/.65*0.1);
-        // rappers[i].walk(window.innerHeight*rappers[i].depth, left);
-      } else {  
-        console.log(i, 'right')
-        rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.1+0.7);
-        // rappers[i].walk(window.innerHeight*rappers[i].depth, left);
+    if(battle) {
+      for(var i=0; i<rappers.length; i++) {
+        if(rappers[i].left<window.innerWidth*.43) {
+          rappers[i].lean = window.innerWidth*(0.4-rappers[i].depthfactor/.65*0.1);
+        } else {  
+          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.1+0.6);
+        }
       }
     }
   });
