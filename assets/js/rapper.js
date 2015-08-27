@@ -1,12 +1,4 @@
-var makeRapper = function(top, left, timeBetweenSteps, lean) {
-  var rapper = new Rapper(top, left, timeBetweenSteps, lean);
-  //rapper.walk();
-  rapper.move(true);
-  return rapper;
-}
-
 var Rapper = function(top, left, timeBetweenSteps, lean) {
-  // use jQuery to create an HTML <span> tag
   this.$node = $('<div class="rapper"></div>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
@@ -16,6 +8,11 @@ var Rapper = function(top, left, timeBetweenSteps, lean) {
   this.$node.attr('id', this.value);
   $('.container').append(this.$node);
   this.lyrics = new RapGenius(name);
+  
+
+  //actions
+
+  this.move(true);
 }
 
 Rapper.prototype.move = function(up) {  
