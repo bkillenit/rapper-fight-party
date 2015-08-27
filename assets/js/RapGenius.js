@@ -1,7 +1,6 @@
 // example get request: http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=michael%20jackson&song=bad
 
 var RapGenius = function() {
-
 }
 
 var artistsSongs = {
