@@ -8,7 +8,7 @@ var artistsSongs = {
 	'rick ross': [window.boxChevy.split('\n'), window.nine.split('\n'), window.imNotAStar.split('\n'), window.holdMeBack.split('\n')],
 	'schoolboy q': [window.studio.split('\n'), window.collardGreens.split('\n'), window.manOfTheYear.split('\n'), window.hellOfANight.split('\n')],
 	'tupac': [window.lifeGoesOn.split('\n'), window.thugzMansion.split('\n'), window.hitEmUp.split('\n'), window.dearMama.split('\n')],
-	'snoop dogg': ['drop it like it\'s hot', 'i wanna rock', 'young, wild & free', 'doggy dogg world']
+	'snoop dogg': [window.dropItlikeItsHot.split('\n'), window.iWannaRock.split('\n'), window.youngWildFree.split('\n'), window.doggyDoggWorld.split('\n')]
 };
 
 RapGenius.prototype.getRandomSong = function(artist) {
