@@ -1,6 +1,6 @@
 // debugger;
 
-$(document).ready(function(){  
+$(document).ready(function(){
   window.rappers = [];
   window.battle = false;
   window.starRappers = {};
@@ -127,43 +127,43 @@ $(document).ready(function(){
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'yellow');
-      }, 200);
+      }, 125);
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'blue');
-      }, 400);
+      }, 300);
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'yellow');
+      }, 450);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'blue');
       }, 600);
 
       setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 750);
+
+      setTimeout(function(){
         $('#battleAlert').css('color', 'blue');
-      }, 800);
+      }, 900);
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'yellow');
-      }, 1000);
+      }, 1050);
 
       setTimeout(function(){
-        $('#battleAlert').css('color', 'blue');
+        $('#battleAlert').css('color', 'yellow');
       }, 1200);
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'yellow');
-      }, 1400);
-
-      setTimeout(function(){
-        $('#battleAlert').css('color', 'yellow');
-      }, 1600);
-
-      setTimeout(function(){
-        $('#battleAlert').css('color', 'yellow');
-      }, 1800);
+      }, 1350);
 
       setTimeout(function(){
         $('#battleAlert').css('visibility', 'hidden');
-      }, 2000);
+      }, 1400);
 
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = true;

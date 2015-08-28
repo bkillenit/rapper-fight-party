@@ -62,16 +62,17 @@ body {
 }
 
 #battleAlert {
-  position: absolute;
+  position: relative;
   display: block;
   visibility: hidden;
-  margin-top: 200px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Battle';
   color: blue;
   text-align: center;
   font-size: 5em;
+  z-index: 1050;
 }
 
 #default {

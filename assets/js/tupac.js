@@ -4,6 +4,3 @@ var TuPac = function(top, left, timeBetweenSteps, lean) {
 
 TuPac.prototype = Object.create(Rapper.prototype);
 TuPac.prototype.constructor = TuPac;
-
-
-
