@@ -9,7 +9,7 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.lyrics = new RapGenius(name);
   this.talk();
   this.$node.attr('id', this.value);
-  $('.container').append(this.$node);  
+  $('.container').append(this.$node);
   this.$node.css(this.setPosition(this.top, this.left));
 
   this.depthfactor = Math.random() * .25 + .4;
@@ -22,7 +22,7 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
 Rapper.prototype.resize = function() {
   this.$node.height(this.top/3 + 80);
-  this.$node.width(this.top/3 + 10);  
+  this.$node.width(this.top/3 + 10);
 };
 
 Rapper.prototype.tilt = function() {
@@ -40,7 +40,30 @@ Rapper.prototype.versus = function(name) {
     var avail = window.starRappers.keys();
     name = avail[Math.floor(Math.random()*avail.length)];
   }
-  
+}
+
+Rapper.prototype.changeSong = function() {
+  var artist = this.value;
+
+  if(this.value === 'kanye-west') {
+    artist = 'kanye';
+  } else if(this.value === 'rick-ross') {
+    artist = 'rickross'
+  } else if(this.value === 'schoolboy-q') {
+    artist = 'schoolboy';
+  } else if(this.value === 'snoop-dogg') {
+    artist = 'snoop';
+  }
+
+  var audio = $("audio");
+  var sourceUrl = 'assets/gangsta-rap/' + artist +'.mp3';
+
+  audio.find('#mp3src').attr("src", sourceUrl);
+  /****************/
+  audio[0].pause();
+  audio[0].load();//suspends and restores all audio element
+  audio[0].play();
+  /***************/
 }
 
 Rapper.prototype.jump = function(up) {
