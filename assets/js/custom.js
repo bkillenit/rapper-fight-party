@@ -8,7 +8,7 @@ $(document).ready(function(){
   $('#addRapperButton').on('click', function(event) {
     var rapper = new Rapper(null,
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
     )
     rappers.push(rapper);
@@ -17,7 +17,7 @@ $(document).ready(function(){
     if( starRappers['kanye'] === undefined ) {
       var rapper = new KanyeWest(
         window.innerHeight*.20,
-        window.innerWidth*.43,
+        window.innerWidth*.5,
         Math.random()*400+200
       )
       starRappers['kanye'] = true;
@@ -30,7 +30,7 @@ $(document).ready(function(){
   $('#addrickrossButton').on('click', function(event) {
       var rapper = new RickRoss( 
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
       )
     rappers.push(rapper);
@@ -38,7 +38,7 @@ $(document).ready(function(){
   $('#addschoolboyqButton').on('click', function(event) {
       var rapper = new SchoolBoyQ(
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
       )
     rappers.push(rapper);
@@ -47,7 +47,7 @@ $(document).ready(function(){
   $('#addsnoopButton').on('click', function(event) {
       var rapper = new Snoop( 
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
       )
     rappers.push(rapper);
@@ -55,7 +55,7 @@ $(document).ready(function(){
   $('#addtupacButton').on('click', function(event) {
     var rapper = new TuPac( 
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
     )
     rappers.push(rapper);
@@ -63,7 +63,7 @@ $(document).ready(function(){
   $('#addeminemButton').on('click', function(event) {
     var rapper = new Eminem( 
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
     )
     rappers.push(rapper);
@@ -81,10 +81,10 @@ $(document).ready(function(){
 
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = true;
-        if(rappers[i].left<window.innerWidth*.43) {
-          rappers[i].lean = window.innerWidth*(0.5-rappers[i].depthfactor/.65*0.3);
+        if(rappers[i].left<window.innerWidth*.5) {
+          rappers[i].lean = window.innerWidth*(0.65-rappers[i].depthfactor/.65*0.4);
         } else {
-          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.3+0.5);
+          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.4+0.4);
         }
       }
     } else {

@@ -18,8 +18,6 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.$node.css( "zIndex", Math.floor(this.depth));
   //actions
   this.walk();
-    
-  // this.jump()
 };
 
 Rapper.prototype.resize = function() {
@@ -31,10 +29,19 @@ Rapper.prototype.tilt = function() {
   var limit = 30;
   var amountAwayFromCenter = this.left - window.innerWidth/2;
 
-  var degrees = -1* (amountAwayFromCenter/(window.innerWidth/2)) * limit*4;
+  var degrees = -1* (amountAwayFromCenter/(window.innerWidth/2)) * limit*3;
+
 
   this.$node.css('transform', 'rotateY(' + degrees +'deg)');
 };
+
+Rapper.prototype.versus = function(name) {
+  if(!name) {
+    var avail = window.starRappers.keys();
+    name = avail[Math.floor(Math.random()*avail.length)];
+  }
+  
+}
 
 Rapper.prototype.jump = function(up) {
   if(up) {
@@ -126,11 +133,10 @@ Rapper.prototype.displayBubble = function(lyric) {
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   this.displayBubble(this.lyrics.getLyric(this.value))
-};
 
   var offset = (window.innerWidth - $('.bubble').width())/2;
   $('.bubble').css('left', offset);
-}
+};
 
 
 Rapper.prototype.setPosition = function(top, left){
