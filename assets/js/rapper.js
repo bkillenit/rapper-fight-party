@@ -30,11 +30,8 @@ Rapper.prototype.resize = function() {
 Rapper.prototype.tilt = function() {
   var limit = 30;
   var amountAwayFromCenter = this.left - window.innerWidth/2;
-  var degrees = (amountAwayFromCenter/(window.innerWidth/2)) * limit*4;
 
-  if(degrees < 0) {
-    degrees = 180 + degrees;
-  }
+  var degrees = -1* (amountAwayFromCenter/(window.innerWidth/2)) * limit*4;
 
   this.$node.css('transform', 'rotateY(' + degrees +'deg)');
 };
@@ -76,6 +73,7 @@ Rapper.prototype.walk = function() {
       setTimeout(this.walk.bind(this), this.timeBetweenSteps);
   } else {
     //line up to the left, if lean < half of screen
+    console.log('fast and furiuous');
     if(this.lean < window.innerWidth*.5){
       if(this.top<this.depth || this.left>this.lean) {
         if(this.top<this.depth) {
@@ -129,6 +127,10 @@ Rapper.prototype.displayBubble = function(lyric) {
 Rapper.prototype.talk = function(timeBetweenSteps) {
   this.displayBubble(this.lyrics.getLyric(this.value))
 };
+
+  var offset = (window.innerWidth - $('.bubble').width())/2;
+  $('.bubble').css('left', offset);
+}
 
 
 Rapper.prototype.setPosition = function(top, left){

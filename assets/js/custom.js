@@ -3,6 +3,8 @@
 $(document).ready(function(){  
   window.rappers = [];
   window.battle = false;
+  window.starRappers = {};
+
   $('#addRapperButton').on('click', function(event) {
     var rapper = new Rapper(null,
       window.innerHeight*.20,
@@ -12,12 +14,18 @@ $(document).ready(function(){
     rappers.push(rapper);
   });
   $('#addkanyewestButton').on('click', function(event) {
-    var rapper = new KanyeWest(
-      window.innerHeight*.20,
-      window.innerWidth*.43,
-      Math.random()*400+200
-    )
-    rappers.push(rapper);
+    if( starRappers['kanye'] === undefined ) {
+      var rapper = new KanyeWest(
+        window.innerHeight*.20,
+        window.innerWidth*.43,
+        Math.random()*400+200
+      )
+      starRappers['kanye'] = true;
+      $(this).text("Remove K West");
+      rappers.push(rapper);
+    } else {
+      $(this).text("Add West");
+    }
   });
   $('#addrickrossButton').on('click', function(event) {
       var rapper = new RickRoss( 
