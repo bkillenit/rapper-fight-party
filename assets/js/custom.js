@@ -4,6 +4,8 @@ $(document).ready(function(){
   window.rappers = [];
   window.battle = false;
   window.starRappers = {};
+  var offset = (window.innerWidth - $('#battleAlert').width())/2;
+  $('#battleAlert').css('left', offset);
 
   var removeRapper = function(rapper) {
     var star = starRappers[rapper];
@@ -121,9 +123,7 @@ $(document).ready(function(){
 
       $('#lineup').text('Stop Battle!!!');
 
-      $('.topbar').after("<div id='battleAlert'>Batle Starting!</div>");
-      var offset = (window.innerWidth - $('#battleAlert').width())/2;
-      $('#battleAlert').css('left', offset);
+      $('#battleAlert').css('visibility', 'visible');
 
       setTimeout(function(){
         $('#battleAlert').css('color', 'yellow');
@@ -162,7 +162,7 @@ $(document).ready(function(){
       }, 1800);
 
       setTimeout(function(){
-        $('#battleAlert').remove();
+        $('#battleAlert').css('visibility', 'hidden');
       }, 2000);
 
       for(var i=0; i<rappers.length; i++) {
