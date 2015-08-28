@@ -14,7 +14,7 @@ $(document).ready(function(){
   $('#addRapperButton').on('click', function(event) {
     var rapper = new Rapper(null,
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
     )
     rappers.push(rapper);
@@ -23,7 +23,7 @@ $(document).ready(function(){
     if( starRappers['kanye'] === undefined ) {
       var rapper = new KanyeWest(
         window.innerHeight*.20,
-        window.innerWidth*.43,
+        window.innerWidth*.5,
         Math.random()*400+200
       )
       starRappers['kanye'] = rapper;
@@ -38,7 +38,7 @@ $(document).ready(function(){
     if( starRappers['rickross'] === undefined ) {
       var rapper = new RickRoss( 
         window.innerHeight*.20,
-        window.innerWidth*.43,
+        window.innerWidth*.5,
         Math.random()*400+200
       )
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
     if( starRappers['schoolboy'] === undefined ) {  
       var rapper = new SchoolBoyQ(
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
       )
       starRappers['schoolboy'] = rapper;
@@ -70,7 +70,7 @@ $(document).ready(function(){
     if( starRappers['snoop'] === undefined ) {  
       var rapper = new Snoop( 
       window.innerHeight*.20,
-      window.innerWidth*.43,
+      window.innerWidth*.5,
       Math.random()*400+200
       )
       starRappers['snoop'] = rapper;
@@ -85,7 +85,7 @@ $(document).ready(function(){
     if( starRappers['tupac'] === undefined ) {  
       var rapper = new TuPac( 
         window.innerHeight*.20,
-        window.innerWidth*.43,
+        window.innerWidth*.5,
         Math.random()*400+200
       )
       starRappers['tupac'] = rapper;
@@ -100,7 +100,7 @@ $(document).ready(function(){
     if( starRappers['eminem'] === undefined ) {  
       var rapper = new Eminem( 
         window.innerHeight*.20,
-        window.innerWidth*.43,
+        window.innerWidth*.5,
         Math.random()*400+200
       )
       starRappers['eminem'] = rapper;
@@ -124,10 +124,10 @@ $(document).ready(function(){
 
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = true;
-        if(rappers[i].left<window.innerWidth*.43) {
-          rappers[i].lean = window.innerWidth*(0.5-rappers[i].depthfactor/.65*0.3);
+        if(rappers[i].left<window.innerWidth*.48) {
+          rappers[i].lean = window.innerWidth*(0.65-rappers[i].depthfactor/.65*0.4);
         } else {
-          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.3+0.5);
+          rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.4+0.4);
         }
       }
     } else {
@@ -140,7 +140,6 @@ $(document).ready(function(){
       // run what we want
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = false;
-        rappers[i].walk();
       }
     }
   });

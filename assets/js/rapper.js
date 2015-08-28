@@ -18,21 +18,29 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.$node.css( "zIndex", Math.floor(this.depth));
   //actions
   this.walk();
-    
-  // this.jump()
 };
 
 Rapper.prototype.resize = function() {
   this.$node.height(this.top/3 + 80);
-  this.$node.width(this.top/3 + 10);
-}
+  this.$node.width(this.top/3 + 10);  
+};
 
 Rapper.prototype.tilt = function() {
   var limit = 30;
   var amountAwayFromCenter = this.left - window.innerWidth/2;
-  var degrees = -1* (amountAwayFromCenter/(window.innerWidth/2)) * limit*4;
+
+  var degrees = -1* (amountAwayFromCenter/(window.innerWidth/2)) * limit*3;
+
 
   this.$node.css('transform', 'rotateY(' + degrees +'deg)');
+};
+
+Rapper.prototype.versus = function(name) {
+  if(!name) {
+    var avail = window.starRappers.keys();
+    name = avail[Math.floor(Math.random()*avail.length)];
+  }
+  
 }
 
 Rapper.prototype.jump = function(up) {
@@ -43,7 +51,7 @@ Rapper.prototype.jump = function(up) {
   }
   this.$node.animate(this.setPosition(this.top, this.left));
   setTimeout(this.jump.bind(this,!up), this.timeBetweenSteps);
-}
+};
 
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
@@ -64,7 +72,7 @@ Rapper.prototype.wander = function() {
 
   this.resize();
   this.$node.animate(this.setPosition(this.top, this.left));
-}
+};
 
 Rapper.prototype.walk = function() {
   if(!this.battle) {
@@ -86,7 +94,7 @@ Rapper.prototype.walk = function() {
         this.resize();
         this.tilt();
         this.$node.animate(this.setPosition(this.top, this.left));
-        setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps);
       } else {
         this.jump();
       }
@@ -112,13 +120,6 @@ Rapper.prototype.walk = function() {
   }
 };
 
-Rapper.prototype.dance = function() {
-  this.setPosition(this.top, this.left);
-
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
-
-}
-
 Rapper.prototype.displayBubble = function(lyric) {
   if(lyric === undefined) return;
   
@@ -130,14 +131,14 @@ Rapper.prototype.displayBubble = function(lyric) {
     var $bubble = $('.container').find('.bubble');
     $bubble.text("\"" + lyric + "\"");
   }
+};
+
+Rapper.prototype.talk = function(timeBetweenSteps) {
+  this.displayBubble(this.lyrics.getLyric(this.value))
 
   var offset = (window.innerWidth - $('.bubble').width())/2;
   $('.bubble').css('left', offset);
-}
-
-Rapper.prototype.talk = function(timeBetweenSteps) {
-  this.displayBubble(this.lyrics.getLyric(this.value));
-}
+};
 
 
 Rapper.prototype.setPosition = function(top, left){
