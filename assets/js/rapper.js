@@ -120,6 +120,8 @@ Rapper.prototype.dance = function() {
 }
 
 Rapper.prototype.displayBubble = function(lyric) {
+  if(lyric === undefined) return;
+  
   if( $('.bubble')[0] ){
     $('.bubble').text("\"" + lyric + "\"");
   } else {
