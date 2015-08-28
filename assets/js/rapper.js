@@ -131,13 +131,13 @@ Rapper.prototype.displayBubble = function(lyric) {
     var $bubble = $('.container').find('.bubble');
     $bubble.text("\"" + lyric + "\"");
   }
+
+  var offset = (window.innerWidth - $('.bubble').width())/2;
+  $('.bubble').css('left', offset);
 };
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   this.displayBubble(this.lyrics.getLyric(this.value))
-
-  var offset = (window.innerWidth - $('.bubble').width())/2;
-  $('.bubble').css('left', offset);
 };
 
 

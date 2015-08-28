@@ -3,6 +3,11 @@ body {
   height: 100%;
 }
 
+@font-face {
+    font-family: 'Battle'; /*a name to be used later*/
+    src: url('../font/tarrgetlaserital.ttf'); /*URL to font*/
+}
+
 .topbar {
   display: block;
 }
@@ -36,7 +41,6 @@ body {
 .bubble {
   position: absolute;
   display: block;
-  left: 675px;
   margin-top: 250px;
   margin-right: auto;
   margin-left: auto;
@@ -55,6 +59,18 @@ body {
   position: fixed;
   height: 250px;
   width: 135px;
+}
+
+#battleAlert {
+  position: absolute;
+  display: block;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Battle';
+  color: blue;
+  text-align: center;
+  font-size: 5em;
 }
 
 #default {

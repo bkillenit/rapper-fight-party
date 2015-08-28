@@ -121,6 +121,49 @@ $(document).ready(function(){
 
       $('#lineup').text('Stop Battle!!!');
 
+      $('.topbar').after("<div id='battleAlert'>Batle Starting!</div>");
+      var offset = (window.innerWidth - $('#battleAlert').width())/2;
+      $('#battleAlert').css('left', offset);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 200);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'blue');
+      }, 400);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 600);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'blue');
+      }, 800);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 1000);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'blue');
+      }, 1200);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 1400);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 1600);
+
+      setTimeout(function(){
+        $('#battleAlert').css('color', 'yellow');
+      }, 1800);
+
+      setTimeout(function(){
+        $('#battleAlert').remove();
+      }, 2000);
 
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = true;
@@ -130,6 +173,7 @@ $(document).ready(function(){
           rappers[i].lean = window.innerWidth*(rappers[i].depthfactor/.65*0.4+0.4);
         }
       }
+
     } else {
       $('#lineup').siblings().each(function() {
         if($(this).attr('id') !== 'lineup') $(this).css('visibility', 'visible');
