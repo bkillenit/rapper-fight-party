@@ -1,6 +1,5 @@
 var Rapper = function(value, top, left, timeBetweenSteps, lean) {
-  window.battle = false;
-
+  this.battle = false;
   this.$node = $('<div class="rapper"></div>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
@@ -57,7 +56,7 @@ Rapper.prototype.wander = function() {
 }
 
 Rapper.prototype.walk = function() {
-  if(!window.battle) {
+  if(!this.battle) {
     this.wander();
       setTimeout(this.walk.bind(this), this.timeBetweenSteps);
   } else {
