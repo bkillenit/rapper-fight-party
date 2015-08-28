@@ -9,7 +9,7 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
   this.lyrics = new RapGenius(name);
   this.talk();
   this.$node.attr('id', this.value);
-  $('.container').append(this.$node);  
+  $('.container').append(this.$node);
   this.$node.css(this.setPosition(this.top, this.left));
 
   this.depthfactor = Math.random() * .25 + .4;
@@ -42,8 +42,21 @@ Rapper.prototype.versus = function(name) {
   }
 }
 
-Rapper.prototype.changeSong = function(artist) {
+Rapper.prototype.changeSong = function() {
+  var artist = this.value;
+
+  if(this.value === 'kanye-west') {
+    artist = 'kanye';
+  } else if(this.value === 'rick-ross') {
+    artist = 'rickross'
+  } else if(this.value === 'schoolboy-q') {
+    artist = 'schoolboy';
+  } else if(this.value === 'snoop-dogg') {
+    artist = 'snoop';
+  }
+
   var audio = $("audio");
+  var sourceUrl = 'assets/gangsta-rap/' + artist +'.mp3';
 
   audio.find('#mp3src').attr("src", sourceUrl);
   /****************/
