@@ -22,7 +22,7 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
 Rapper.prototype.resize = function() {
   this.$node.height(this.top/3 + 80);
-  this.$node.width(this.top/3 + 10);  
+  this.$node.width(this.top/3 + 10);
 };
 
 Rapper.prototype.tilt = function() {
@@ -40,7 +40,17 @@ Rapper.prototype.versus = function(name) {
     var avail = window.starRappers.keys();
     name = avail[Math.floor(Math.random()*avail.length)];
   }
-  
+}
+
+Rapper.prototype.changeSong = function(artist) {
+  var audio = $("audio");
+
+  audio.find('#mp3src').attr("src", sourceUrl);
+  /****************/
+  audio[0].pause();
+  audio[0].load();//suspends and restores all audio element
+  audio[0].play();
+  /***************/
 }
 
 Rapper.prototype.jump = function(up) {
