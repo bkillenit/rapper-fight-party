@@ -70,7 +70,9 @@ $(document).ready(function(){
 
       $('#lineup').text('Stop Battle!!!');
 
+
       for(var i=0; i<rappers.length; i++) {
+        rappers[i].battle = true;
         if(rappers[i].left<window.innerWidth*.43) {
           rappers[i].lean = window.innerWidth*(0.5-rappers[i].depthfactor/.65*0.3);
         } else {
@@ -85,6 +87,10 @@ $(document).ready(function(){
       $('#lineup').text('Rap Battle!!!');
 
       // run what we want
+      for(var i=0; i<rappers.length; i++) {
+        rappers[i].battle = false;
+        rappers[i].walk();
+      }
     }
   });
 });
