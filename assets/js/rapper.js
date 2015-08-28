@@ -28,6 +28,20 @@ Rapper.prototype.resize = function() {
   this.$node.width(this.top/3 + 10);
 }
 
+Rapper.prototype.tilt = function() {
+  var limit = 30;
+  var amountAwayFromCenter = this.left - window.innerWidth/2;
+  var degrees = (amountAwayFromCenter/(window.innerWidth/2)) * limit*4;
+
+  if(degrees < 0) {
+    degrees = 180 + degrees;
+  } else {
+    degrees = -1*degrees;
+  }
+
+  this.$node.css('transform', 'rotateY(' + degrees +'deg)');
+}
+
 Rapper.prototype.jump = function(up) {
   if(up) {
     this.top-=25;
@@ -41,9 +55,10 @@ Rapper.prototype.jump = function(up) {
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
     this.top += 30;
-    this.resize();
   }
+
   var random = Math.random();
+  var direction;
   if(random<this.multipl) {
     if(this.left>window.innerWidth*.3){
       this.left -= 30;
@@ -53,6 +68,8 @@ Rapper.prototype.wander = function() {
       this.left += 30;
     }
   }
+
+  this.resize();
   this.$node.animate(this.setPosition(this.top, this.left));
 }
 
@@ -67,11 +84,13 @@ Rapper.prototype.walk = function() {
         if(this.top<this.depth) {
           this.top+=25;
           this.top+=15;
-          this.resize();
         }
         if(this.left>this.lean) {
           this.left-=25;
         }
+
+        this.resize();
+        this.tilt();
         this.$node.animate(this.setPosition(this.top, this.left));
         setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
       } else {
@@ -83,11 +102,13 @@ Rapper.prototype.walk = function() {
       if(this.top<this.depth || this.left<this.lean) {
         if(this.top<this.depth) {
           this.top+=25;
-          this.resize();
         }
         if(this.left<this.lean) {
           this.left+=25;
         }
+
+        this.resize();
+        this.tilt();
         this.$node.animate(this.setPosition(this.top, this.left));
         setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
       } else { 
