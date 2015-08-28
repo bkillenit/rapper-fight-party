@@ -89,7 +89,6 @@ $(document).ready(function(){
       // run what we want
       for(var i=0; i<rappers.length; i++) {
         rappers[i].battle = false;
-        rappers[i].walk();
       }
     }
   });

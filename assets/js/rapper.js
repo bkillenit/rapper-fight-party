@@ -24,8 +24,8 @@ var Rapper = function(value, top, left, timeBetweenSteps, lean) {
 
 Rapper.prototype.resize = function() {
   this.$node.height(this.top/3 + 80);
-  this.$node.width(this.top/3 + 10);
-}
+  this.$node.width(this.top/3 + 10);  
+};
 
 Rapper.prototype.tilt = function() {
   var limit = 30;
@@ -34,12 +34,10 @@ Rapper.prototype.tilt = function() {
 
   if(degrees < 0) {
     degrees = 180 + degrees;
-  } else {
-    degrees = -1*degrees;
   }
 
   this.$node.css('transform', 'rotateY(' + degrees +'deg)');
-}
+};
 
 Rapper.prototype.jump = function(up) {
   if(up) {
@@ -49,7 +47,7 @@ Rapper.prototype.jump = function(up) {
   }
   this.$node.animate(this.setPosition(this.top, this.left));
   setTimeout(this.jump.bind(this,!up), this.timeBetweenSteps);
-}
+};
 
 Rapper.prototype.wander = function() {
   if(this.top<this.depth) {
@@ -70,7 +68,7 @@ Rapper.prototype.wander = function() {
 
   this.resize();
   this.$node.animate(this.setPosition(this.top, this.left));
-}
+};
 
 Rapper.prototype.walk = function() {
   if(!this.battle) {
@@ -91,7 +89,7 @@ Rapper.prototype.walk = function() {
         this.resize();
         this.tilt();
         this.$node.animate(this.setPosition(this.top, this.left));
-        setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps);
       } else {
         this.jump();
       }
@@ -109,20 +107,13 @@ Rapper.prototype.walk = function() {
         this.resize();
         this.tilt();
         this.$node.animate(this.setPosition(this.top, this.left));
-        setTimeout(this.walk.bind(this), this.timeBetweenSteps/20);
+        setTimeout(this.walk.bind(this), this.timeBetweenSteps);
       } else { 
         this.jump();
       }
     }
   }
 };
-
-Rapper.prototype.dance = function() {
-  this.setPosition(this.top, this.left);
-
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
-
-}
 
 Rapper.prototype.displayBubble = function(lyric) {
   if( $('.bubble')[0] ){
@@ -133,11 +124,11 @@ Rapper.prototype.displayBubble = function(lyric) {
     var $bubble = $('.container').find('.bubble');
     $bubble.text("\"" + lyric + "\"");
   }
-}
+};
 
 Rapper.prototype.talk = function(timeBetweenSteps) {
   this.displayBubble(this.lyrics.getLyric(this.value))
-}
+};
 
 
 Rapper.prototype.setPosition = function(top, left){
